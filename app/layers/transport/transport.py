@@ -7,7 +7,7 @@ from ...config import config
 # este método se encarga de "pegarle" a la API y traer una lista de objetos JSON.
 def getAllImages():
     json_collection = []
-    for id in range(1, 30):
+    for id in range(1, 21):
         response = requests.get(config.STUDENTS_REST_API_URL + str(id))
 
         # si la búsqueda no arroja resultados, entonces retornamos una lista vacía de elementos.    
@@ -21,11 +21,17 @@ def getAllImages():
             print(f"[transport.py]: Pokémon con id {id} no encontrado.")
             continue
 
-        json_collection.append(raw_data)
+        json_collection.append({
+        "name": raw_data["name"] , 
+        "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+str(raw_data["id"] )+".png",
+        "height": raw_data["height"],
+        "weight": raw_data["weight"],
+        "base": raw_data["base_experience"],
+        "types" : raw_data["types"]})
 
     return json_collection
 
 # obtiene la imagen correspodiente para un type_id especifico 
 def get_type_icon_url_by_id(type_id):
-    base_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-iii/colosseum/'
+    base_url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2'
     return f"{base_url}{type_id}.png"

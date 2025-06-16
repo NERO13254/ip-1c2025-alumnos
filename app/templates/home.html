@@ -40,7 +40,7 @@
             <div class="card border-success mb-3 ms-5" style="max-width: 540px; ">
                  <div class="row g-0">
                      <div class="col-md-4">
-                         <img src="{{ img.image }}" class="card-img-top"alt="imagen">
+                         <img src="{{ img.url }}" class="card-img-top"alt="imagen">
                      </div>
 
                     <div class="col-md-8">
@@ -49,7 +49,7 @@
                             <p class="card-text">
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                     {% for poketype in img.types %}
-                                    <strong><em>{{poketype}}</em></strong>
+                                    <strong><em>{{poketype.type.name}}</em></strong>
                                     {% endfor %} 
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
