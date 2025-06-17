@@ -37,26 +37,26 @@
         {% else %} {% for img in images %}
         <div class="col">
             <!-- evaluar si la imagen pertenece al tipo fuego, agua o planta -->
-            <div class="card border-success mb-3 ms-5" style="max-width: 540px; ">
-                 <div class="row g-0">
-                     <div class="col-md-4">
-                         <img src="{{ img.url }}" class="card-img-top"alt="imagen">
+            <div class="card border-success mb-3 ms-5 h-100" style="max-width: 540px; ">
+                 <div class="row-cols-0 row-cols-md-0 g-0">
+                     <div class="w-100 h-50">
+                         <img src="{{ img.url }}" class="card-img-top card-img-top w-75 d-block h-100 mx-auto" alt="imagen">
                      </div>
 
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ img.name }} #{{ img.id }} <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Master Ball"></h3>
-                            <p class="card-text">
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <div class="col-md-0 mt-1">
+                        <div class="card-body pb-0">
+                            <h3 class="card-title mb-0">{{ img.name }} #{{ img.id }} <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Master Ball"></h3>
+                            
+                                <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
                                     {% for poketype in img.types %}
                                     <strong><em>{{poketype.type.name}}</em></strong>
                                     {% endfor %} 
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                            </p>
-                            <p class="card-text"><small class="text-body-secondary">Altura: {{ img.height }}</small></p>
-                            <p class="card-text"><small class="text-body-secondary">Peso: {{ img.weight }}</small></p>
-                            <p class="card-text"><small class="text-body-secondary">Nivel de experiencia base: {{ img.base }}</small></p>
+                            
+                            <p class="card-text mb-0"><small class="text-body-secondary">Altura: {{ img.height }}</small></p>
+                            <p class="card-text mb-0"><small class="text-body-secondary">Peso: {{ img.weight }}</small></p>
+                            <p class="card-text mb-0"><small class="text-body-secondary">Nivel de experiencia base: {{ img.base }}</small></p>
                         </div>
                         {% if request.user.is_authenticated %}
                         <div class="card-footer text-center">
