@@ -1,44 +1,44 @@
 {% extends 'header.html' %} {% block content %}
 <main>
-    <h1 class="text-center">Buscador de Pokemon</h1>
+    <h2 class="text-center">Buscador de Pokemon</h2>
 
     <div class="d-flex justify-content-center" style="margin-bottom: 1%">
         <!-- Buscador del sitio -->
-        <form class="d-flex" action="{% url 'buscar' %}" method="POST">
+        <form class="d-flex bg-dark" action="{% url 'buscar' %}" method="POST">
             {% csrf_token %}
-            <input class="form-control me-2" type="search" name="query" placeholder="Pikachu, Charizard, Ditto" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
+            <input class="border-0 bg-dark text-white me0 rounded-0  " type="search" name="query" placeholder="Pikachu . . ." aria-label="Search">
+            <button class="btn bg-dark border-0 text-white" type="submit">Buscar</button>
         </form>
     </div>
 
-    <div class="d-flex gap-1 col-2 mx-auto mb-3">
-        <form method="post" action="{% url 'filter_by_type' %}">
+    <div class="row row-cols-md-3  w-100 m-auto p-1">
+        <form class=" btn-danger  p-1" method="post" action="{% url 'filter_by_type' %}">
             {% csrf_token %}
             <input type="hidden" name="type" value="fire">
-            <button type="submit" class="btn btn-danger">FUEGO</button>
+            <button type="submit" class="p-0 m-0 w-100 h-100  btn btn-danger">FUEGO</button>
         </form>
 
-        <form method="post" action="{% url 'filter_by_type' %}">
+        <form class=" btn-primary  p-1" method="post" action="{% url 'filter_by_type' %}">
             {% csrf_token %}
             <input type="hidden" name="type" value="water">
-            <button type="submit" class="btn btn-primary">AGUA</button>
+            <button type="submit" class="p-0 m-0 w-100 h-100  btn btn-primary ">AGUA</button>
         </form>
 
-        <form method="post" action="{% url 'filter_by_type' %}">
+        <form class=" btn-success  p-1" method="post" action="{% url 'filter_by_type' %}">
             {% csrf_token %}
             <input type="hidden" name="type" value="grass">
-            <button type="submit" class="btn btn-success">PLANTA</button>
+            <button type="submit" class="p-0 m-0 w-100 h-100 btn btn-success">PLANTA</button>
         </form>
     </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4 m-1">
         {% if images|length == 0 %}
         <h2 class="text-center">La búsqueda no arrojó resultados...</h2>
         {% else %} {% for img in images %}
-        <div class="col">
+        <div class="col m-0 p-0">
             <!-- evaluar si la imagen pertenece al tipo fuego, agua o planta -->
-            <div class="card border-success mb-3 ms-5 h-100" style="max-width: 540px; ">
-                 <div class="row-cols-0 row-cols-md-0 g-0">
+            <div class="card rounded-0 border-success mb-0 ms-0 h-100" style="max-width: 540px; ">
+                 <div class="row-cols-0 row-cols-md-0 g-0 bg-dark text-white">
                      <div class="w-100 h-50">
                          <img src="{{ img.url }}" class="card-img-top card-img-top w-75 d-block h-100 mx-auto" alt="imagen">
                      </div>
