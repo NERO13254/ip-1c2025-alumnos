@@ -45,13 +45,13 @@
             <!-- depende de que tipo sea cambia el color del borde  -->
 
             {% if img.types.0.type.name == 'grass' %}
-                <div class="card border-success rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; ">
+                <div class="card rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; border-top:10px solid #198754 ">
             {% elif img.types.0.type.name == 'fire' %}
-                <div class="card border-danger rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; "> 
+                <div class="card rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; border-top:10px solid red"> 
             {% elif img.types.0.type.name == 'water' %}
-                <div class="card border-secondary rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; ">         
+                <div class="card rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; border-top:10px solid #1302ff ">         
             {% else %} 
-                <div class="card border-warning rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; "> 
+                <div class="card rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; border-top:10px solid orange"> 
             {% endif %}
 
                  <div class="row-cols-0 row-cols-md-0 g-0 bg-dark text-white">

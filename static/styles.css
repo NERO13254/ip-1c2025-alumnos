@@ -140,3 +140,7 @@ table.table td i {
     margin-top: 6px;
     font-size: 95%;
 }
+
+.border-top-succes-thick{
+    border-top: 3px solid #198754;
+}
