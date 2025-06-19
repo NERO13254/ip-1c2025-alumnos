@@ -71,7 +71,8 @@ Luego se le envía a la función render() esta variable :
 
 return render(request, 'home.html', { 'images': images, 'favourite_list': favourite_list })
 
-
+Se agregó un borde de color dinámico en la tarjeta del Pokémon dentro de home.html
+que cambia según su tipo: Fuego, Agua o Planta.
 
 # Buscador I (según el nombre del pokémon)
 Dentro de views.py se encuentra la función  **search**
@@ -101,6 +102,10 @@ luego se encapsula el resultado de la funcion en una variable y se le envía a r
 # ALTA de nuevos usuarios
  FALTA RESOLVER
 # Loading Spinner* para la carga de imágenes
- FALTA RESOLVER
+
+ Se crea una plantilla llamada 'spinner.html'.
+ Esta se utiliza como pantalla intermedia al ingresar a la sección de galería.
+ Al renderizarse, muestra un GIF de carga centrado (spinner),
+ y automáticamente redirige al usuario hacia la vista de la Pokédex ('pokedex') tras unos segundos.
+
 # Renovar interfaz gráfica 
- Se agrego el borde de color dependiendo el tipo del pokemon Fuego, agua o pasto.

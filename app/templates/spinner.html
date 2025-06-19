@@ -1,0 +1,15 @@
+{% extends 'header.html' %} {% block content %}
+
+<head><meta http-equiv="refresh" content="0; url={% url 'home' %}" /></head>
+
+
+
+<main>
+<div id="spinner-loader">
+  <div class="d-flex justify-content-center align-items-center vh-100 bg-white">
+    <img src="https://media.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif" alt="Cargando..." width="80">
+  </div>
+</div>
+
+</main>
+{% endblock %}

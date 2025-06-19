@@ -1,4 +1,7 @@
 {% extends 'header.html' %} {% block content %}
+
+
+
 <main>
     <h2 class="text-center">Buscador de Pokemon</h2>
 
@@ -31,6 +34,7 @@
         </form>
     </div>
 
+<<<<<<< HEAD
         <div class="row row-cols-1 row-cols-md-3 g-4 m-1">
         {% if images|length == 0 %}
         <h2 class="text-center">La búsqueda no arrojó resultados...</h2>
@@ -41,6 +45,30 @@
                  <div class="row-cols-0 row-cols-md-0 g-0 bg-dark text-white">
                      <div class="w-100 h-50">
                          <img src="{{ img.url }}" class="card-img-top card-img-top w-75 d-block h-100 mx-auto" alt="imagen">
+=======
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 m-1">
+        {% if images|length == 0 %}
+        <h2 class="text-center">La búsqueda no arrojó resultados...</h2>
+        {% else %} {% for img in images %}
+        <div class="col  m-0 p-0">
+
+            <!-- depende de que tipo sea cambia el color del borde  -->
+
+            {% if img.types.0.type.name == 'grass' %}
+                <div class="card border-success rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; ">
+            {% elif img.types.0.type.name == 'fire' %}
+                <div class="card border-danger rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; "> 
+            {% elif img.types.0.type.name == 'water' %}
+                <div class="card border-secondary rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; ">         
+            {% else %} 
+                <div class="card border-warning rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; "> 
+            {% endif %}
+
+                 <div class="row-cols-0 row-cols-md-0 g-0 bg-dark text-white">
+                     <div class="w-100 h-50">
+                         <img src="{{ img.url }}" class="card-img-top card-img-top w-75 d-block h-100 mx-auto"alt="imagen">
+>>>>>>> 2e4d5a1ebb5ba88c2111905c0d9735e816f52b85
                      </div>
 
                     <div class="col-md-0 mt-1">
