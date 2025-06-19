@@ -94,6 +94,8 @@ luego se encapsula el resultado de la funcion en una variable y se le envía a r
  El buscador de tipos funciona de la misma manera pero implementa la función filterByType(type)
 
 
+
+
 # Favoritos
  FALTA RESOLVER
 # ALTA de nuevos usuarios
@@ -101,4 +103,4 @@ luego se encapsula el resultado de la funcion en una variable y se le envía a r
 # Loading Spinner* para la carga de imágenes
  FALTA RESOLVER
 # Renovar interfaz gráfica 
- FALTA RESOLVER
+ Se agrego el borde de color dependiendo el tipo del pokemon Fuego, agua o pasto.
