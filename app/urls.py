@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.index_page, name='index-page'),
     path('login/', views.index_page, name='login'),
     path('home/', views.home, name='home'),
+    path('h0me/', views.spinner, name='spinner'),
     
     path('buscar/', views.search, name='buscar'),
     path('filter_by_type/', views.filter_by_type, name='filter_by_type'),
