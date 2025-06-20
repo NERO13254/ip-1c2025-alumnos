@@ -36,33 +36,37 @@
 
 
 
-        <div class="row row-cols-1 row-cols-md-3 g-4 m-1">
+        <div class="row row-cols-1 row-cols-md-4 gap-0 w-100 ">
         {% if images|length == 0 %}
         <h2 class="text-center">La búsqueda no arrojó resultados...</h2>
         {% else %} {% for img in images %}
-        <div class="col  m-0 p-0">
+        <div class="col d-block ps-1 pe-1 m-0 h-100">
 
             <!-- depende de que tipo sea cambia el color del borde  -->
 
             {% if img.types.0.type.name == 'grass' %}
-                <div class="card rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; border-top:10px solid #198754 ">
+                <div class="card bgGrass rounded-0 mb-1 ms-0 h-100">
             {% elif img.types.0.type.name == 'fire' %}
-                <div class="card rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; border-top:10px solid red"> 
+                <div class="card bgFire rounded-0 mb-1 ms-0 h-100" > 
             {% elif img.types.0.type.name == 'water' %}
-                <div class="card rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; border-top:10px solid #1302ff ">         
+                <div class="card bgWater rounded-0 mb-1 ms-0 h-100" >         
             {% else %} 
-                <div class="card rounded-0 mb-0 ms-0 h-100" style="max-width: 540px; border-top:10px solid orange"> 
+                <div class="card bgNormal rounded-0 mb-1 ms-0 h-100" > 
             {% endif %}
 
-                 <div class="row-cols-0 row-cols-md-0 g-0 bg-dark text-white">
-                     <div class="w-100 h-50">
-                         <img src="{{ img.url }}" class="card-img-top card-img-top w-75 d-block h-100 mx-auto"alt="imagen">
-                     </div>
+
+                              
+                 <div class="row-cols-0 row-cols-md-0 g-0 ">
+                    <strong>Basíco</strong>
+                    <strong class="card-title mb-0 text-dark fs-4">  {{ img.name }} </strong>
+
+
+                    <div class="w-100 h-50 bgPokemon  ">
+                        <img src="{{ img.url }}" class="card-img-top card-img-top w-75 d-block h-100 mx-auto"alt="imagen">
+                    </div>
 
                     <div class="col-md-0 mt-1">
-                        <div class="card-body pb-0">
-                            <h3 class="card-title mb-0">{{ img.name }} #{{ img.id }} <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Master Ball"></h3>
-                            
+                        <div class="card-body pb-0">                            
                                 <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
                                     {% for poketype in img.types %}
                                     <strong><em>{{poketype.type.name}}</em></strong>
@@ -70,9 +74,9 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             
-                            <p class="card-text mb-0"><small class="text-body-secondary">Altura: {{ img.height }}</small></p>
-                            <p class="card-text mb-0"><small class="text-body-secondary">Peso: {{ img.weight }}</small></p>
-                            <p class="card-text mb-0"><small class="text-body-secondary">Nivel de experiencia base: {{ img.base }}</small></p>
+                            <strong class="card-text mb-0 text-dark d-block"><small class="text-body-secondary">Altura: {{ img.height }}</small></strong>
+                            <strong class="card-text mb-0 text-dark d-block"><small class="text-body-secondary">Peso: {{ img.weight }}</small></strong>
+                            <strong class="card-text mb-0 text-dark d-block"><small class="text-body-secondary">Nivel de experiencia base: {{ img.base }}</small></strong>
                         </div>
                         {% if request.user.is_authenticated %}
                         <div class="card-footer text-center">

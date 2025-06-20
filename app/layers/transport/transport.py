@@ -27,7 +27,8 @@ def getAllImages():
         "height": raw_data["height"],
         "weight": raw_data["weight"],
         "base": raw_data["base_experience"],
-        "types" : raw_data["types"]})
+        "types" : raw_data["types"],
+        "form": "https://pokeapi.co/api/v2/pokemon-species/"+ str(raw_data["name"]) +"/"})
 
     return json_collection
 

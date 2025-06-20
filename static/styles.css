@@ -141,6 +141,42 @@ table.table td i {
     font-size: 95%;
 }
 
-.border-top-succes-thick{
-    border-top: 3px solid #198754;
+.bgGrass {
+    border:10px solid #8cebbf;
+    background-image: url("https://media.istockphoto.com/id/1479645012/es/vector/manual-pintado-en-acuarela-verde-brillante-como-fondo.jpg?s=612x612&w=0&k=20&c=Gc0Vvu8K_BjS0ZiY2NvgkNELtcQLvgaKNYQvHowywOc=");
+}
+.bgFire {
+    border: 10px solid  #ff9d00;
+    background-image: url("https://media.istockphoto.com/id/1400633908/es/foto/textura-abstracta-de-fondo-grunge-naranja-fondo-naranja-cemento.jpg?s=612x612&w=0&k=20&c=EbP-MGXKi4zHlNCrsntXjpCEw-aPOwltIJq2MVySqaQ=");
+}
+.bgWater {
+    border: 10px solid #d0fffd;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/001/361/540/non_2x/blue-watercolor-background-free-vector.jpg");
+}
+.bgNormal{
+    border: 10px solid #fffa9c;
+    background-image: url("https://img.freepik.com/vector-gratis/vector-fondo-decorativo-textura-acuarela-amarillo-suave_1055-12504.jpg?semt=ais_hybrid&w=740");
+}
+
+.bgGrass, .bgWater ,.bgFire, .bgPossion , .bgNormal{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 540px;
+    min-height: 500.59px;
+    max-height: 500.59px;
+    overflow: hidden;
+}
+
+.bgPokemon{
+    background-image: url("https://sdmntprcentralus.oaiusercontent.com/files/00000000-6990-61f5-9177-595b6f3a0172/raw?se=2025-06-20T16%3A33%3A08Z&sp=r&sv=2024-08-04&sr=b&scid=ec0f2af2-a964-5f0e-840d-dbb2a59a1f6d&skoid=e9d2f8b1-028a-4cff-8eb1-d0e66fbefcca&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-20T14%3A03%3A26Z&ske=2025-06-21T14%3A03%3A26Z&sks=b&skv=2024-08-04&sig=p%2B9bFSeiDsuYcaaSsaJsy1xsZapR1PEBJAATXs781MI%3D");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.specialBorder{
+    border: none;
+    border-bottom: 3px solid grey;
+    box-sizing: border-box;
 }
