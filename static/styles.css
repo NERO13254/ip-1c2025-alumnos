@@ -169,7 +169,7 @@ table.table td i {
 }
 
 .bgPokemon{
-    background-image: url("https://sdmntprcentralus.oaiusercontent.com/files/00000000-6990-61f5-9177-595b6f3a0172/raw?se=2025-06-20T16%3A33%3A08Z&sp=r&sv=2024-08-04&sr=b&scid=ec0f2af2-a964-5f0e-840d-dbb2a59a1f6d&skoid=e9d2f8b1-028a-4cff-8eb1-d0e66fbefcca&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-20T14%3A03%3A26Z&ske=2025-06-21T14%3A03%3A26Z&sks=b&skv=2024-08-04&sig=p%2B9bFSeiDsuYcaaSsaJsy1xsZapR1PEBJAATXs781MI%3D");
+    background-image: url("./bgPokemon.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
