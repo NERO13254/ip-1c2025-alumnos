@@ -57,21 +57,42 @@
 
                               
                  <div class="row-cols-0 row-cols-md-0 g-0 ">
-                    <strong>Basíco</strong>
-                    <strong class="card-title mb-0 text-dark fs-4">  {{ img.name }} </strong>
+                    <!-- contenedor de tipo y salud base -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <strong class="typeContent">Fase 1</strong>
+                        <strong>Ps: {{img.hp}}</strong>
+                    </div>
+                    
+                    <!-- copntenedor del nombre -->
+                    <div class="nameContent">
+                        <strong class="card-title mb-0 text-dark fs-5">  {{ img.name }} </strong>
+                    </div>
+                    
 
 
                     <div class="w-100 h-50 bgPokemon  ">
                         <img src="{{ img.url }}" class="card-img-top card-img-top w-75 d-block h-100 mx-auto"alt="imagen">
+                        <p class="numberOfPokemon">Pokemon N°{{ img.id }} Perteneciente a POKEAPI</p>
                     </div>
 
                     <div class="col-md-0 mt-1">
                         <div class="card-body pb-0">                            
-                                <div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
+                                <div class=" mb-0 d-flex" role="alert">
                                     {% for poketype in img.types %}
-                                    <strong><em>{{poketype.type.name}}</em></strong>
+                                        {% if poketype.type.name == 'grass' %}
+                                            <div class="grassElement"></div>
+                                        {% elif poketype.type.name == 'fire' %}
+                                            <div class="fireElement"></div>
+                                        {% elif poketype.type.name == 'water' %}
+                                            <div class="waterElement"></div>
+                                        {% elif poketype.type.name == 'flying' %}
+                                            <div class="flyingType"></div>
+                                        {% elif poketype.type.name == 'poison' %}
+                                            <div class="posionType"></div>
+                                        {% else %}
+                                            <div class="normalElement"></div>
+                                        {% endif %}
                                     {% endfor %} 
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             
                             <strong class="card-text mb-0 text-dark d-block"><small class="text-body-secondary">Altura: {{ img.height }}</small></strong>

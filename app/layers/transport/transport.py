@@ -7,7 +7,7 @@ from ...config import config
 # este método se encarga de "pegarle" a la API y traer una lista de objetos JSON.
 def getAllImages():
     json_collection = []
-    for id in range(1, 21):
+    for id in range(1, 51 ):
         response = requests.get(config.STUDENTS_REST_API_URL + str(id))
 
         # si la búsqueda no arroja resultados, entonces retornamos una lista vacía de elementos.    
@@ -22,13 +22,15 @@ def getAllImages():
             continue
 
         json_collection.append({
+        "id" : raw_data["id"],
         "name": raw_data["name"] , 
         "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+str(raw_data["id"] )+".png",
         "height": raw_data["height"],
         "weight": raw_data["weight"],
         "base": raw_data["base_experience"],
         "types" : raw_data["types"],
-        "form": "https://pokeapi.co/api/v2/pokemon-species/"+ str(raw_data["name"]) +"/"})
+        "hp": raw_data["stats"][0]["base_stat"] 
+        })
 
     return json_collection
 
