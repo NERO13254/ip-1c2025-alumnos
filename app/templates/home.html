@@ -60,7 +60,7 @@
                     <!-- contenedor de tipo y salud base -->
                     <div class="d-flex justify-content-between align-items-center">
                         <strong class="typeContent">Fase 1</strong>
-                        <strong>Ps: {{img.hp}}</strong>
+                        <strong class="fs-4 text-dark"> <span class="fs-6">ps</span>{{img.hp}}</strong>
                     </div>
                     
                     <!-- copntenedor del nombre -->
@@ -71,7 +71,7 @@
 
 
                     <div class="w-100 h-50 bgPokemon  ">
-                        <img src="{{ img.url }}" class="card-img-top card-img-top w-75 d-block h-100 mx-auto"alt="imagen">
+                        <img src="{{ img.url }}" style="max-width: 186px;" class="card-img-top card-img-top w-75 d-block h-100 mx-auto"alt="imagen">
                         <p class="numberOfPokemon">Pokemon N°{{ img.id }} Perteneciente a POKEAPI</p>
                     </div>
 
