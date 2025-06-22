@@ -1,12 +1,15 @@
 # capa de vista/presentación
 
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .layers.services import services
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .layers.transport.transport import getAllImages 
 from .layers.services.services import filterByType
 from .layers.services.services import filterByCharacter
+from .models import Favourite
+from django.views.decorators.http import require_POST
+
 
 def spinner(request):
     return render(request, 'spinner.html')
@@ -16,11 +19,16 @@ def index_page(request):
 
 # esta función obtiene 2 listados: uno de las imágenes de la API y otro de favoritos, ambos en formato Card, y los dibuja en el template 'home.html'.
 def home(request):
-    images = getAllImages()  # obtiene todas las imágenes de la API.
+    images = getAllImages()  # Tu función para obtener Pokémon de la API
 
     favourite_list = []
+    if request.user.is_authenticated:
+        favourite_list = Favourite.objects.filter(user=request.user).values_list('name', flat=True)
 
-    return render(request, 'home.html', { 'images': images, 'favourite_list': favourite_list,})
+    return render(request, 'home.html', {
+        'images': images,
+        'favourite_list': favourite_list,
+    })
 
 # función utilizada en el buscador.
 def search(request):
@@ -50,17 +58,36 @@ def filter_by_type(request):
 
 
 # Estas funciones se usan cuando el usuario está logueado en la aplicación.
-@login_required
 def getAllFavouritesByUser(request):
-    pass
+    favourite_list = Favourite.objects.filter(user=request.user)
+    context = {
+        'favourite_list': favourite_list
+    }
+    return render(request, 'favourites.html', context)
 
 @login_required
+@require_POST
 def saveFavourite(request):
-    pass
+    favourite, created = Favourite.objects.get_or_create(
+        pokeapi_id=request.POST['id'],
+        user=request.user,
+        defaults={
+            'name': request.POST['name'],
+            'height': request.POST['height'],
+            'weight': request.POST['weight'],
+            'base_experience': request.POST['base_experience'],
+            'image': request.POST['image'],
+        }
+    )
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
 
 @login_required
+@require_POST
 def deleteFavourite(request):
-    pass
+    favourite_id = request.POST.get('id')
+    favourite = get_object_or_404(Favourite, id=favourite_id, user=request.user)
+    favourite.delete()
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
 
 @login_required
 def exit(request):
