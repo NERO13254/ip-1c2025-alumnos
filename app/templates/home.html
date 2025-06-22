@@ -70,28 +70,17 @@
                     
 
 
-                    <div class="w-100 h-50 bgPokemon  ">
+                    <div class="w-100 h-50 bg{{ img.types.0.type.name | default:'Pokemon' }}  ">
                         <img src="{{ img.url }}" style="max-width: 186px;" class="card-img-top card-img-top w-75 d-block h-100 mx-auto"alt="imagen">
                         <p class="numberOfPokemon">Pokemon N°{{ img.id }} Perteneciente a POKEAPI</p>
                     </div>
 
                     <div class="col-md-0 mt-1">
-                        <div class="card-body pb-0">                            
+                        <div class="card-body pb-0"> 
+                                <!-- contenedor de "tipo y elemento " -->
                                 <div class=" mb-0 d-flex" role="alert">
                                     {% for poketype in img.types %}
-                                        {% if poketype.type.name == 'grass' %}
-                                            <div class="grassElement"></div>
-                                        {% elif poketype.type.name == 'fire' %}
-                                            <div class="fireElement"></div>
-                                        {% elif poketype.type.name == 'water' %}
-                                            <div class="waterElement"></div>
-                                        {% elif poketype.type.name == 'flying' %}
-                                            <div class="flyingType"></div>
-                                        {% elif poketype.type.name == 'poison' %}
-                                            <div class="posionType"></div>
-                                        {% else %}
-                                            <div class="normalElement"></div>
-                                        {% endif %}
+                                        <div class="{{ poketype.type.name|default:'normal' }}Element"></div>
                                     {% endfor %} 
                                 </div>
                             
