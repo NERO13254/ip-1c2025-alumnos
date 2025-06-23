@@ -22,13 +22,14 @@ De esta forma la variable images contenga la información necesaria para que la 
 comienza estableciendo una variable denominadoa json_collection = [] , la cual va a ser la encargada de almaacenar las cards , de la api.
 al finalizar la función se retorna esta variable 
 
-luego se implementa un bucle for que comienza desd del 1 hasta el 20 , este bucle sirve para limitar los resultados de la api , si queremos modificar cuantas cards traer podemos modificar el for , por ejemplo , si queremos traer 100 cards solo debemos cambiar el rango :
+Posteriormente se implementa un gestor de contexto (with #code as #code ) para manejar las respuestas de la API para que al finalizar las consultas los recursos utilizados se liberen .
 
-    --for i in range(1 , 101 ) : 
+dentro de este se encuentra un ejecutor (ThreadPoolExecutor) realiza varias funciones al mismo tiempo.
+Posteriormente se utiliza el método .map del executor que especifica la función a realizar y las iteraciones 
 
-luego solicita los datos a la  api , mediante la variable **response** 
-posteriormente evalua si la respuesta de la api es satisfactoria . si response contiene  error , esa card se carga con error lanzando el mensaje 
-"error al obtener datos para el id" , o lo mismo si no encuentra el pokemon "Pokémon con id {id} no encontrado"
+
+luego solicita los datos a la  api , mediante la Funcion **fetch_pokemon(id)**
+evalua si la respuesta de la api es satisfactoria . si response contiene  error , esa card se carga con error.
 
 luego transforma la respuesta de la api en formato JSON , para que pueda ser manipulable : 
  raw_data = response.json()
@@ -51,12 +52,14 @@ una vez transformado en formato JSON , hay una función que se encarga de agrupa
     basandome en el ejemplo brindado creé el objeto :
 
     {
-        "name": raw_data["name"] , 
-        "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+str(raw_data["id"] )+".png",
+        "id": raw_data["id"],
+        "name": raw_data["name"],
+        "url": f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{raw_data['id']}.png",
         "height": raw_data["height"],
         "weight": raw_data["weight"],
         "base": raw_data["base_experience"],
-        "types" : raw_data["types"]
+        "types": raw_data["types"],
+        "hp": raw_data["stats"][0]["base_stat"]
     }
 
     name    : retorna el nombre .
@@ -65,7 +68,8 @@ una vez transformado en formato JSON , hay una función que se encarga de agrupa
     weight  : retorna el peso.
     base    : retorna el nivel base de experiencia.
     type    : retorna los tipos ("fuego , aire") (pueden ser mas de un solo tipo)
-
+    hp      : puntos de salud base 
+    
 Ese elemento / ejementos JSON son los que contienen la variable images de la sección views.py
 Luego se le envía a la función render() esta variable :
 

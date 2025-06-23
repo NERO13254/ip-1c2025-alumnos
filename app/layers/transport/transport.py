@@ -1,37 +1,34 @@
 # capa de transporte/comunicación con otras interfaces o sistemas externos.
-
+import concurrent.futures
 import requests
 from ...config import config
 
-# comunicación con la REST API.
-# este método se encarga de "pegarle" a la API y traer una lista de objetos JSON.
-def getAllImages():
-    json_collection = []
-    for id in range(1, 51 ):
-        response = requests.get(config.STUDENTS_REST_API_URL + str(id))
-
-        # si la búsqueda no arroja resultados, entonces retornamos una lista vacía de elementos.    
-        if not response.ok:
-            print(f"[transport.py]: error al obtener datos para el id {id}")
-            continue
-
-        raw_data = response.json()
-
-        if 'detail' in raw_data and raw_data['detail'] == 'Not found.':
-            print(f"[transport.py]: Pokémon con id {id} no encontrado.")
-            continue
-
-        json_collection.append({
-        "id" : raw_data["id"],
-        "name": raw_data["name"] , 
-        "url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+str(raw_data["id"] )+".png",
+# comunicación con la API.
+def fetch_pokemon(id):
+    response = requests.get(config.STUDENTS_REST_API_URL + str(id))
+    #  si la respuesta falla
+    if not response.ok:
+        print(f"[transport.py]: Error")
+        return None
+    raw_data = response.json()
+    return {
+        "id": raw_data["id"],
+        "name": raw_data["name"],
+        "url": f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{raw_data['id']}.png",
         "height": raw_data["height"],
         "weight": raw_data["weight"],
         "base": raw_data["base_experience"],
-        "types" : raw_data["types"],
-        "hp": raw_data["stats"][0]["base_stat"] 
-        })
+        "types": raw_data["types"],
+        "hp": raw_data["stats"][0]["base_stat"]
+    }
 
+
+def getAllImages():
+    json_collection = []
+    # realiza las consultas a la api al mismo tiempo , reduciendo el tiempo de espera
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        results = list(executor.map(fetch_pokemon, range(1,51)))
+    json_collection = [r for r in results ]
     return json_collection
 
 # obtiene la imagen correspodiente para un type_id especifico 
