@@ -102,9 +102,17 @@ luego se encapsula el resultado de la funcion en una variable y se le envía a r
 
 
 # Favoritos
- FALTA RESOLVER
-# ALTA de nuevos usuarios
- FALTA RESOLVER
+ Mejoras en la funcionalidad de favoritos:
+Se corrigieron errores relacionados con el modelo Favourite.
+Se actualizaron las migraciones para reflejar estos cambios en la base de datos.
+Se agregó la lógica de guardado de favoritos:
+Los usuarios autenticados ahora pueden agregar Pokémon a favoritos desde la interfaz principal.
+Se implementó la vista saveFavourite, usando get_or_create para evitar duplicados por usuario.
+Se actualizó la interfaz para mostrar el estado actual: si un Pokémon ya está en favoritos, se muestra un botón deshabilitado.
+Se mejoró el diseño de los botones de tipo (FUEGO, AGUA, PLANTA):
+Ahora usan clases Bootstrap para diferenciarse visualmente según el tipo.
+Se organizó mejor el layout de estas opciones.
+
 # Loading Spinner* para la carga de imágenes
 
  Se crea una plantilla llamada 'spinner.html'.
@@ -112,4 +120,4 @@ luego se encapsula el resultado de la funcion en una variable y se le envía a r
  Al renderizarse, muestra un GIF de carga centrado (spinner),
  y automáticamente redirige al usuario hacia la vista de la Pokédex ('pokedex') tras unos segundos.
 
-# Renovar interfaz gráfica 
+
